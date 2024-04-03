@@ -1,0 +1,30 @@
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+print("Try programiz.pro")
+
+def printPairs(arr, n, sum):
+    # Store counts of all elements in map m
+    m = {}
+
+    # Traverse through all elements
+    for i in range(n):
+        # Search if a pair can be formed with arr[i].
+        rem = sum - arr[i]
+        if rem == arr[i]:
+            # Check if the complement is in the map and occurs only once
+            if m.get(rem, 0) == 1:
+                print(f"({rem}, {arr[i]})")
+        elif rem in m and arr[i] not in m:
+            # Check if the complement is in the map and the current element is not in the map
+            print(f"({rem}, {arr[i]})")
+        m[arr[i]] = m.get(arr[i], 0) + 1  # Update the map with the current element's count
+
+# Driver function to test the above function
+arr = [5,7,2,11,19,21]
+n = len(arr)
+sum_val = 13
+printPairs(arr, n, sum_val)
+
+
+Output:
+(2, 11)
